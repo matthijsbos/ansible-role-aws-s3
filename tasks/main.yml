@@ -1,6 +1,7 @@
 ---
 
-- stat:
+- name: Check if destination file already exists
+  stat:
     path: "{{ dest }}"
   register: dest_stat
 
@@ -19,7 +20,7 @@
       {{ src }}
       {{ dest }}
   register: command_result
-  failed_when: command_result.stderr != ''
+  #failed_when: command_result.stderr != ''
   when:
       - mode == "get"
       - not dest_stat.stat.exists

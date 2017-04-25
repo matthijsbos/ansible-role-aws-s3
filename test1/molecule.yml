@@ -1,0 +1,35 @@
+---
+ansible:
+    ansiblecfg_defaults:
+        roles_path: ../../../
+
+driver:
+  name: docker
+
+docker:
+  containers:
+    - name: minio
+      image: minio/minio
+      image_version: latest
+      hostname: minio
+      ansible_groups:
+        - servers
+      command: server /export
+      network:
+        - test_network
+      volume_mounts:
+          - "${PWD}/export:/export:rw"
+      environment:
+          MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
+          MINIO_SECRET_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+    - name: aws-cli
+      image: ubuntu
+      image_version: latest
+      dockerfile: Dockerfile
+      ansible_groups:
+        - clients
+      network:
+        - test_network
+      links:
+          minio: minio
