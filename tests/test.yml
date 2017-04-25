@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  roles:
+      - role: ansible-role-aws-cli-s3
+        mode: get
+        src: s3://vivado-install/vivado_lab_install_config.txt
+        dest: /tmp/test.txt
+        aws_endpoint_url: http://s3.fpgaedu.com
+        aws_region: us-east-1
+        aws_access_key: 00laiolu4vefe8js8i6c
+        aws_secret_key: qtm3baov1un04mbzi5z3erbos4huiei0zk1t3efv
+

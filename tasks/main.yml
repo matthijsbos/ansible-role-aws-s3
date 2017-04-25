@@ -1,0 +1,26 @@
+---
+
+- stat:
+    path: "{{ dest }}"
+  register: dest_stat
+
+- name: Download file from S3
+  environment:
+      AWS_ACCESS_KEY_ID: "{{ aws_access_key }}"
+      AWS_SECRET_ACCESS_KEY: "{{ aws_secret_key }}"
+      AWS_DEFAULT_REGION: "{{ aws_region }}"
+  command: >
+      aws
+      {% if aws_endpoint_url is defined and aws_endpoint_url != '' %}
+      --endpoint-url {{ aws_endpoint_url }}
+      {% endif %}
+      s3
+      cp
+      {{ src }}
+      {{ dest }}
+  register: command_result
+  failed_when: command_result.stderr != ''
+  when:
+      - mode == "get"
+      - not dest_stat.stat.exists
+
