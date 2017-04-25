@@ -1,7 +1,7 @@
 ---
 ansible:
     ansiblecfg_defaults:
-        roles_path: "${PWD}/../../"
+        roles_path: "${PWD}/../../../"
 
 driver:
   name: docker
