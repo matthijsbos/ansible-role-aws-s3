@@ -18,7 +18,7 @@ docker:
       network:
         - test_network
       volume_mounts:
-          - "${PWD}/export:/export:rw"
+          - "${PWD}/minio-export:/export:rw"
       environment:
           MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
           MINIO_SECRET_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
