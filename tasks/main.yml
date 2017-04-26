@@ -2,26 +2,23 @@
 
 - name: Check if destination file already exists
   stat:
-    path: "{{ dest }}"
-  register: dest_stat
+    path: "{{ aws_s3_dest }}"
+  register: aws_s3_dest_stat
 
 - name: Download file from S3
   environment:
-      AWS_ACCESS_KEY_ID: "{{ aws_access_key }}"
-      AWS_SECRET_ACCESS_KEY: "{{ aws_secret_key }}"
-      AWS_DEFAULT_REGION: "{{ aws_region }}"
+      AWS_ACCESS_KEY_ID: "{{ aws_s3_access_key }}"
+      AWS_SECRET_ACCESS_KEY: "{{ aws_s3_secret_key }}"
+      AWS_DEFAULT_REGION: "{{ aws_s3_region }}"
   command: >
       aws
-      {% if aws_endpoint_url is defined and aws_endpoint_url != '' %}
-      --endpoint-url {{ aws_endpoint_url }}
+      {% if aws_s3_endpoint_url is defined and aws_s3_endpoint_url != '' %}
+      --endpoint-url {{ aws_s3_endpoint_url }}
       {% endif %}
       s3
       cp
-      {{ src }}
-      {{ dest }}
-  register: command_result
-  #failed_when: command_result.stderr != ''
+      {{ aws_s3_src }}
+      {{ aws_s3_dest }}
   when:
-      - mode == "get"
-      - not dest_stat.stat.exists
+      - not aws_s3_dest_stat.stat.exists
 

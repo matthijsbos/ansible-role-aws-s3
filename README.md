@@ -40,12 +40,18 @@ A list of other roles hosted on Galaxy should go here, plus any details in regar
 Example Playbook
 ----------------
 
-TODO:
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Download an object `test-file.txt` from bucket `test-bucket`.
+```
+- hosts: all
+  roles:
+      - role: matthijsbos.aws_s3
+        aws_s3_src: s3://test-bucket/test-file.txt
+        aws_s3_dest: /tmp/test.txt
+        aws_s3_endpoint_url: http://minio:9000
+        aws_s3_region: us-east-1
+        aws_s3_access_key: AKIAIOSFODNN7EXAMPLE
+        aws_s3_secret_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+```
 
 License
 -------
