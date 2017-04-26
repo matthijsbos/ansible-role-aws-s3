@@ -8,6 +8,23 @@ Requirements
 
 - [AWS CLI](https://aws.amazon.com/cli/) is to be installed on the remote host.
 
+Installation
+------------
+
+Command line:
+```
+ansible-galaxy install matthijsbos.aws_s3
+```
+
+requirements.yml
+```
+# Ansible Galaxy, or
+- src: matthijsbos.aws_s3
+# Github
+- src: git+https://github.com/matthijsbos/ansible-role-aws-s3
+  name: matthijsbos.aws_s3
+```
+
 Role Variables
 --------------
 
