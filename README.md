@@ -1,4 +1,4 @@
-matthijsbos.aws-s3
+matthijsbos.aws\_s3
 =========
 
 Ansible role for downloading of files from amazon s3 using aws-cli as backend.
