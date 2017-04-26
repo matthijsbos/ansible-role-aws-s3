@@ -1,6 +1,9 @@
 matthijsbos.aws\_s3
 =========
 
+[![Ansible Role](https://img.shields.io/ansible/role/17368.svg)](https://galaxy.ansible.com/matthijsbos/aws_s3/)
+[![Travis](https://img.shields.io/travis/matthijsbos/ansible-role-aws-s3.svg)](https://travis-ci.org/matthijsbos/ansible-role-aws-s3)
+
 Ansible role for downloading of files from amazon s3 using aws-cli as backend.
 
 Requirements
