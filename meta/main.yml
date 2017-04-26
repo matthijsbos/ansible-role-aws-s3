@@ -1,8 +1,10 @@
 galaxy_info:
   author: Matthijs Bos
-  description: Ansible role for downloading of files from amazon s3 using aws-cli as backend
+  description: >
+      Ansible role for downloading of files from amazon s3 using aws-cli as
+      backend.
 
-  issue_tracker_url: http://example.com/issue/tracker
+  issue_tracker_url: https://github.com/matthijsbos/ansible-role-aws-s3/issues
 
   license: Apache License 2.0
 
@@ -13,7 +15,7 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-          - all
+        - all
 
   galaxy_tags: []
 
